@@ -8,13 +8,17 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NullComponent } from './null/null.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    HomeComponent    
+    HomeComponent,
+    NavbarComponent,
+    NullComponent,
   ],
   imports: [
     CommonModule,

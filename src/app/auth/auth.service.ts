@@ -33,6 +33,7 @@ export class AuthService {
   logout() {
     this.user.next(null);
     localStorage.removeItem("user");
+    this.router.navigate([''])
   }
 
   login(email:string, password: string) {
@@ -54,12 +55,12 @@ export class AuthService {
     }
 
     const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const loadedUser = new User(user.email, user.id,user._token, new Date(user._tokenExpirationDate));
     let check = !!user
-    if(check){
+    if( check){
       this.router.navigate(['home'])
     }
-    const loadedUser = new User(user.email, user.id,user._token, new Date(user._tokenExpirationDate));
-
+    
     if(loadedUser.token) {
       this.user.next(loadedUser);
       
@@ -67,21 +68,21 @@ export class AuthService {
   }
 
   private handleError(err: HttpErrorResponse) {
-    let message = "ERROR: İnformation Not Found";
+    let message = "Email Və Ya Şifrə Yalnışdır!";
 
     if(err.error.error) {
       switch(err.error.error.message) {
         case "EMAIL_EXISTS":
-          message = "This Mail Addred Already  Used"
+          message = "Bu E-mail Artıq İstifadə Olunub!"
           break;
         case "TOO_MANY_ATTEMPTS_TRY_LATER":
-          message = "Wait And Try Again"
+          message = "Bir Müddət Gözlə Və Yenidən Cəht Et"
           break;
         case "EMAIL_NOT_FOUND":
-          message = "Email Not Found";
+          message = "Yalnış Email";
           break;
         case "INVALID_PASSWORD":
-          message ="Wrong Password";
+          message ="Yalnış Şifrə";
           break;
       }
     }
