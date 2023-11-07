@@ -1,0 +1,24 @@
+<div class="auth">
+    <div class="text-content">
+        <h1>Salam</h1>
+        <h2>{{marketname}}</h2>
+        <h2>Mağazamıza Xoş Gəldin</h2>
+    </div>
+    <form class="card shadow p-4 bg-light mt-5">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-Mail</label>
+            <input type="email" name="email" id="email" class="form-control"  required ngModel >
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Şifrə</label>
+            <input type="password" name="passwoord" id="passwoord" class="form-control"  required ngModel >
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary" >{{ isLoginMode ? "Giriş Et": "Hesab Yarat" }}</button>
+            <button type="button" class="btn btn-outline-primary" (click)="toogleMode()">
+                {{ isLoginMode ? "Yeni Hesab Yarat": "Artıq Hesabım Var" }}
+            </button>
+        </div>
+    </form>
+</div>
