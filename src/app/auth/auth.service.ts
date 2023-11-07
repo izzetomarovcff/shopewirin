@@ -4,6 +4,7 @@ import { BehaviorSubject, catchError, Subject, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthResponse } from './model/auth-response.model';
 import { User } from './model/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   api_key = environment.api_key;
   user = new BehaviorSubject<User|null>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router : Router) { }
 
   register(email: string, password: string) {
 
@@ -53,11 +54,15 @@ export class AuthService {
     }
 
     const user = JSON.parse(localStorage.getItem("user") || "{}");
-
+    let check = !!user
+    if(check){
+      this.router.navigate(['home'])
+    }
     const loadedUser = new User(user.email, user.id,user._token, new Date(user._tokenExpirationDate));
 
     if(loadedUser.token) {
       this.user.next(loadedUser);
+      
     }
   }
 

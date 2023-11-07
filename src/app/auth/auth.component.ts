@@ -51,7 +51,7 @@ export class AuthComponent implements OnInit {
       next: () => {
         this.loading = false;
         this.error = "";
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         this.loading = false;
