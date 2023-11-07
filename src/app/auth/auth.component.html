@@ -4,21 +4,29 @@
         <h2>{{marketname}}</h2>
         <h2>Mağazamıza Xoş Gəldin</h2>
     </div>
-    <form class="card shadow p-4 bg-light mt-5">
+
+    <form #form="ngForm" (ngSubmit)="handleAuth(form)" class="card shadow p-4 bg-light mt-5">
+        <h3 class="mx-auto my-3 text-primary">{{ isLoginMode ? "Giriş": "Qeydiyyat" }}</h3>
+        <div class="alert alert-warning" *ngIf="error">
+            {{error}}
+        </div>
         <div class="mb-3">
-            <label for="email" class="form-label">E-Mail</label>
-            <input type="email" name="email" id="email" class="form-control"  required ngModel >
+            <label for="email" email class="form-label">E-Mail</label>
+            <input type="email" required email ngModel name="email" id="email" class="form-control" >
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Şifrə</label>
-            <input type="password" name="passwoord" id="passwoord" class="form-control"  required ngModel >
+            <input type="password" required minlength="6" ngModel name="password" id="password" class="form-control" >
         </div>
 
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary" >{{ isLoginMode ? "Giriş Et": "Hesab Yarat" }}</button>
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{ isLoginMode ? "Giriş Et": "Hesab Yarat" }}</button>
             <button type="button" class="btn btn-outline-primary" (click)="toogleMode()">
-                {{ isLoginMode ? "Yeni Hesab Yarat": "Artıq Hesabım Var" }}
+                {{ isLoginMode ? "Qeydiyyat": "Artıq Hesabım Var" }}
             </button>
+        </div>
+        <div *ngIf="false" class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
         </div>
     </form>
 </div>
