@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { HomeComponent } from './home/home.component';
-import { NullComponent } from './null/null.component';
-
+import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './authentication/auth/auth.component';
+import { HomeComponent } from './shared/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent },
-  { path: 'home', component: HomeComponent },  
-  { path: 'null', component: NullComponent },  
+  { path: '' , component : AuthComponent },
+  { path: 'home', component: HomeComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules
-  })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="home">
+    <div class="categories">
+        <div class="category shadow-sm rounded border p-1">Hamsı</div>
+        <div class="category shadow-sm rounded border p-1">Qolbaqlar</div>
+        <div class="category shadow-sm rounded border p-1">Üzüklər</div>
+        <div class="category shadow-sm rounded border p-1">Boyunbağılar</div>
+        <div class="category shadow-sm rounded border p-1">Sırğalar</div>
+        <div class="category shadow-sm rounded border p-1">Qolbaqlar</div>
+        <div class="category shadow-sm rounded border p-1">Üzüklər</div>
+        <div class="category shadow-sm rounded border p-1">Boyunbağılar</div>
+        <div class="category shadow-sm rounded border p-1">Sırğalar</div>
+    </div>
+    <div class="products">
+        <div>
+            <div *ngFor="let product of products" class="card col-10 mx-auto mt-3">
+                <img src="{{product.imgurl}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.details}}</p>
+                    <p>{{product.price}} AZN</p>
+                    <div class="product-buttons">
+                        <div class="btn btn-sm btn-primary"><i class='bx bxs-cart-add'></i> Səbətə Əlavə et</div>
+                        <div class="btn btn-sm btn-outline-primary like">
+                            <i class='bx bx-heart'></i>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
