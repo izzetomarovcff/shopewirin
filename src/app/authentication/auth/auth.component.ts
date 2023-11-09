@@ -37,15 +37,25 @@ export class AuthComponent implements OnInit {
 
     this.loading = true;
     
+    const fullname = form.value.fullname // new
+    const phone = form.value.phone  //new
+
     const email = form.value.email;
     const password = form.value.password;
     let authResponse: Observable<AuthResponse>;
+    
 
     if(this.isLoginMode) {     
       authResponse = this.authService.login(email, password);
     } else {
       authResponse = this.authService.register(email, password);
+      this.authService.saveDate({id: 0, fullname: fullname, phone: phone, email: email, password: password }).subscribe(data=>{
+        console.log("ok")
+      })
     }
+    
+
+
 
     authResponse.subscribe({
       next: () => {

@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Subject, tap, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, catchError, Subject, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthResponse } from './auth-response.model'; 
 import { User } from './user.model';
 import { Router } from '@angular/router';
+import { SaveData } from './savedata.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class AuthService {
 
   api_key = environment.api_key;
   user = new BehaviorSubject<User|null>(null);
+  url = environment.database_url
 
   constructor(private http: HttpClient, private router : Router) { }
 
@@ -87,6 +89,8 @@ export class AuthService {
       }
     }
 
+
+
     return throwError(() => message);
   }
 
@@ -104,5 +108,8 @@ export class AuthService {
     this.user.next(user);
 
     localStorage.setItem("user", JSON.stringify(user));
+  }
+  saveDate(saveData: SaveData):Observable<SaveData>{
+    return this.http.post<SaveData>(this.url + "users.json", saveData)
   }
 }

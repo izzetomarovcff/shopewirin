@@ -4,12 +4,20 @@
         <h2>{{marketname}}</h2>
         <h2>Mağazamıza Xoş Gəldin</h2>
     </div>
-
     <form #form="ngForm" (ngSubmit)="handleAuth(form)" class="card shadow p-4 bg-light mt-5">
         <h3 class="mx-auto my-3 text-primary">{{ isLoginMode ? "Giriş": "Qeydiyyat" }}</h3>
         <div class="alert alert-warning" *ngIf="error">
             {{error}}
         </div>
+        <div *ngIf="!isLoginMode" class="mb-3">
+            <label for="fullname" class="form-label">Ad Soyad</label>
+            <input type="text" required minlength="6" ngModel name="fullname" id="fullname" class="form-control" >
+        </div>
+        <div *ngIf="!isLoginMode" class="mb-3">
+            <label for="phone" class="form-label">Telefon</label>
+            <input type="text" required ngModel name="phone" id="phone" class="form-control" >
+        </div>
+
         <div class="mb-3">
             <label for="email" email class="form-label">E-Mail</label>
             <input type="email" required email ngModel name="email" id="email" class="form-control" >
