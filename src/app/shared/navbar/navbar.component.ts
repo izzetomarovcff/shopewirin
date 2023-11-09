@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/authentication/auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -16,5 +16,4 @@ export class NavbarComponent implements OnInit {
   logoutsys(){
     this.authService.logout()
   }
-
 }

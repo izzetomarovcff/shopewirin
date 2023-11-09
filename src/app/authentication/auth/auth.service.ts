@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Subject, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AuthResponse } from './model/auth-response.model';
-import { User } from './model/user.model';
+import { AuthResponse } from './auth-response.model'; 
+import { User } from './user.model';
 import { Router } from '@angular/router';
 
 @Injectable({
