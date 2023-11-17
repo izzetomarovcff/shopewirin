@@ -7,6 +7,7 @@ import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductsComponent } from './products/products.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 
 
@@ -17,7 +18,8 @@ import { ProductsComponent } from './products/products.component';
     CartComponent,
     OrdersComponent,
     CategoryComponent,
-    ProductsComponent
+    ProductsComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ProductsComponent } from './products/products.component';
     HomeComponent,
     CartComponent,
     LikedComponent,
-    OrdersComponent
+    OrdersComponent,
+    CategoriesComponent
   ]
 })
 export class PagesModule { }
