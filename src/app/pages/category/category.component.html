@@ -1,3 +1,10 @@
 <app-navbar></app-navbar>
-<p>category works!</p>
+<form class="card shadow createcategoryform">
+    <h2 class="mx-auto mb-2">Yeni Kategoriya Yarat</h2>
+    <div class="mb-3">
+        <label for="name" class="form-label">Kategoriya Adı</label>
+        <input #name type="text" name="name" id="name" class="form-control">
+    </div>
+    <button type="button" class="btn btn-primary" (click)="saveCategory(name)">Kategoriya Yarat</button>
+</form>
 <app-footer></app-footer>
